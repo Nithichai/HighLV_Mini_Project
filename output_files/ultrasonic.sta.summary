@@ -1,0 +1,77 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow 1200mV 85C Model Setup 'clk'
+Slack : -4.005
+TNS   : -842.878
+
+Type  : Slow 1200mV 85C Model Setup 'LCD:LCD_BOX|frequency_divider:DIVIDER|temp'
+Slack : -2.628
+TNS   : -35.803
+
+Type  : Slow 1200mV 85C Model Hold 'clk'
+Slack : 0.102
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Hold 'LCD:LCD_BOX|frequency_divider:DIVIDER|temp'
+Slack : 0.466
+TNS   : 0.000
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -466.944
+
+Type  : Slow 1200mV 85C Model Minimum Pulse Width 'LCD:LCD_BOX|frequency_divider:DIVIDER|temp'
+Slack : -1.487
+TNS   : -35.688
+
+Type  : Slow 1200mV 0C Model Setup 'clk'
+Slack : -3.753
+TNS   : -764.911
+
+Type  : Slow 1200mV 0C Model Setup 'LCD:LCD_BOX|frequency_divider:DIVIDER|temp'
+Slack : -2.420
+TNS   : -32.104
+
+Type  : Slow 1200mV 0C Model Hold 'clk'
+Slack : 0.110
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Hold 'LCD:LCD_BOX|frequency_divider:DIVIDER|temp'
+Slack : 0.417
+TNS   : 0.000
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -466.944
+
+Type  : Slow 1200mV 0C Model Minimum Pulse Width 'LCD:LCD_BOX|frequency_divider:DIVIDER|temp'
+Slack : -1.487
+TNS   : -35.688
+
+Type  : Fast 1200mV 0C Model Setup 'clk'
+Slack : -1.167
+TNS   : -180.589
+
+Type  : Fast 1200mV 0C Model Setup 'LCD:LCD_BOX|frequency_divider:DIVIDER|temp'
+Slack : -0.603
+TNS   : -5.119
+
+Type  : Fast 1200mV 0C Model Hold 'clk'
+Slack : -0.069
+TNS   : -0.069
+
+Type  : Fast 1200mV 0C Model Hold 'LCD:LCD_BOX|frequency_divider:DIVIDER|temp'
+Slack : 0.194
+TNS   : 0.000
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'clk'
+Slack : -3.000
+TNS   : -409.893
+
+Type  : Fast 1200mV 0C Model Minimum Pulse Width 'LCD:LCD_BOX|frequency_divider:DIVIDER|temp'
+Slack : -1.000
+TNS   : -24.000
+
+------------------------------------------------------------

@@ -1,0 +1,57 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.MATH_REAL.ALL;
+
+entity trigger is
+	port(
+		clk_i   : in std_logic;
+		rst_i   : in std_logic;
+		req_in  : in std_logic;
+		data_in : in std_logic_vector(7 downto 0);
+		trigger_out : out std_logic;
+	);
+end trigger;
+
+architecture behave of trigger is
+	type state_type is(
+		WAIT_DATA,
+		CHECK_DATA,
+		GEN_TRIGGER
+	);
+	signal state : state_type := WAIT_DATA;
+	constant number_gen : integer := 500;
+	signal counter_number : integer range 0 to 501 := 0;
+begin
+	process(clk_i)
+	begin
+		if rising_edge(clk_i) then
+			if rst_i = '0' then
+				state <= WAIT_DATA;
+				trigger_out <= '0';
+			else
+				case state is
+					when WAIT_DATA =>
+						if req_in = '1' then
+							state <= CHECK_DATA;
+						end if;
+					when CHECK_DATA =>
+						if data_in = "11111111" then
+							state <= GEN_TRIGGER;
+						end if;
+					when GEN_TRIGGER =>
+						if counter_number <= number_gen then
+							trigger_out <= '1';
+							counter_number <= counter_number + 1;
+						else
+							trigger_out <= '0';
+							counter_number <= 0;
+							state <= WAIT_DATA;
+						end if;
+				end case;
+			end if;
+		end if;
+	end process;
+end behave;
+					
+	

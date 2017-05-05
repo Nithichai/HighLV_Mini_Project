@@ -1,0 +1,61 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.NUMERIC_STD.ALL;
+use IEEE.MATH_REAL.ALL;
+
+entity echo is
+	port(
+		clk_i    : in std_logic;
+		rst_i    : in std_logic;
+		echo_in  : in std_logic;
+		req_out  : out std_logic;
+		data_out : out std_logic_vector(7 downto 0);
+	);
+end echo;
+
+architecture behave of echo is
+	type state_type is(
+		WAIT_ECHO,
+		COUNTER_TIME,
+		ADC_ECHO,
+	);
+	signal state : state_type := WAIT_ECHO;
+	constant number_count : integer := 2500;
+	signal counter_number : integer range 0 to 2501 := 0;
+	signal counter_pulse  : integer range 0 to 800  := 0;
+begin
+	process(clk_i)
+	begin
+		if rising_edge(clk_i) then
+			if rst_i = '0' then
+				state <= WAIT_ECHO;
+				req_out <= '0';
+				data_out <= "00000000";
+			else
+				case state is
+					when WAIT_ECHO =>
+						if echo_in = '1' then
+							state <= COUNTER_TIME;
+							counter_pulse <= 0;
+						end if;
+					when COUNTER_TIME =>
+					   if echo_in = '1' then
+							if counter_number < number_count then
+								counter_number <= counter_number + 1;
+							else	
+								counter_pulse <= counter_pulse + 1;
+								counter_number <= 0;
+							end if;
+						elsif echo_in = '0' then
+							state <= WAIT_ECHO;
+							counter_pulse <= counter_pulse * 50;
+							data_out <= std_logic_vector(to_unsigned(counter_pulse, 8));
+						end if;
+				end case;
+			end if;
+		end if;
+	end process;
+end behave;
+					
+			
+	

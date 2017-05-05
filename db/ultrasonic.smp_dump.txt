@@ -1,0 +1,50 @@
+
+State Machine - |ultrasonic|LCD:LCD_BOX|lcd16x2_ctrl:LCD|op_state
+Name op_state.DONE op_state.WAIT_DELAY_L op_state.WAIT_HOLD_L op_state.ENABLE_L op_state.WAIT_SETUP_L op_state.WAIT_DELAY_H op_state.WAIT_HOLD_H op_state.ENABLE_H op_state.WAIT_SETUP_H op_state.IDLE 
+op_state.IDLE 0 0 0 0 0 0 0 0 0 0 
+op_state.WAIT_SETUP_H 0 0 0 0 0 0 0 0 1 1 
+op_state.ENABLE_H 0 0 0 0 0 0 0 1 0 1 
+op_state.WAIT_HOLD_H 0 0 0 0 0 0 1 0 0 1 
+op_state.WAIT_DELAY_H 0 0 0 0 0 1 0 0 0 1 
+op_state.WAIT_SETUP_L 0 0 0 0 1 0 0 0 0 1 
+op_state.ENABLE_L 0 0 0 1 0 0 0 0 0 1 
+op_state.WAIT_HOLD_L 0 0 1 0 0 0 0 0 0 1 
+op_state.WAIT_DELAY_L 0 1 0 0 0 0 0 0 0 1 
+op_state.DONE 1 0 0 0 0 0 0 0 0 1 
+
+State Machine - |ultrasonic|LCD:LCD_BOX|lcd16x2_ctrl:LCD|state
+Name state.WRITE_LINE2 state.SELECT_LINE2 state.WRITE_LINE1 state.SELECT_LINE1 state.CONFIG state.RESET 
+state.RESET 0 0 0 0 0 0 
+state.CONFIG 0 0 0 0 1 1 
+state.SELECT_LINE1 0 0 0 1 0 1 
+state.WRITE_LINE1 0 0 1 0 0 1 
+state.SELECT_LINE2 0 1 0 0 0 1 
+state.WRITE_LINE2 1 0 0 0 0 1 
+
+State Machine - |ultrasonic|tx:SEND_RX|state
+Name state.SEND_STOP_BIT state.SEND_BITS state.SEND_START_BIT state.WAIT_FOR_REQ 
+state.WAIT_FOR_REQ 0 0 0 0 
+state.SEND_START_BIT 0 0 1 1 
+state.SEND_BITS 0 1 0 1 
+state.SEND_STOP_BIT 1 0 0 1 
+
+State Machine - |ultrasonic|mux_n_to_8:GET_DATA|state
+Name state.DELAY state.SEND_DATA state.CHECK_NUMBER state.WAIT_REQ 
+state.WAIT_REQ 0 0 0 0 
+state.CHECK_NUMBER 0 0 1 1 
+state.SEND_DATA 0 1 0 1 
+state.DELAY 1 0 0 1 
+
+State Machine - |ultrasonic|trigger:GEN_TRIGGER|state
+Name state.DELAY_TRIGGER state.GEN_TRIGGER state.CHECK_DATA state.WAIT_DATA 
+state.WAIT_DATA 0 0 0 0 
+state.CHECK_DATA 0 0 1 1 
+state.GEN_TRIGGER 0 1 0 1 
+state.DELAY_TRIGGER 1 0 0 1 
+
+State Machine - |ultrasonic|rx:GET_TX|state
+Name state.WAIT_FOR_STOP_BIT state.RECEIVE_BITS state.WAIT_HALF_BIT state.WAIT_FOR_RX_START 
+state.WAIT_FOR_RX_START 0 0 0 0 
+state.WAIT_HALF_BIT 0 0 1 1 
+state.RECEIVE_BITS 0 1 0 1 
+state.WAIT_FOR_STOP_BIT 1 0 0 1 
